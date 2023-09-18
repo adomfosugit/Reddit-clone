@@ -1,30 +1,11 @@
-import { DropdownMenuItem, DropdownMenuSeparator } from '@/components/ui/dropdown-menu';
-import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuTrigger } from '@radix-ui/react-dropdown-menu';
-import { TiHome } from 'react-icons/ti'
-import Communities from './Communities';
+import React from 'react'
+import CommunityModal from '@/components/Modal/CommunityModal'
+
 type Props = {}
 
-function Directory({}: Props) {
-   
+const Directory = (props: Props) => {
   return (
-        <DropdownMenu >
-            <DropdownMenuTrigger  > <TiHome size={30} /></DropdownMenuTrigger>
-            
-            <DropdownMenuContent  className= ' bg-white w-[250px] p-2 mt-[25px] font-semibold mx-auto '>
-           
-            <DropdownMenuSeparator />
-                
-                    <DropdownMenuGroup  >
-                    <DropdownMenuItem className='gap-x-3 hover:bg-blue-800 hover:text-white'>
-                        
-                        <Communities />
-                    </DropdownMenuItem>
-                    
-                 
-                </DropdownMenuGroup>  
-            </DropdownMenuContent>
-        </DropdownMenu>
+    <><CommunityModal /></>
   )
 }
-
-export default Directory
+export default Directory;

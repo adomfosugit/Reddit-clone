@@ -1,12 +1,14 @@
 import { authModalState } from '@/Atoms/AuthModalAtom'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import React from 'react'
+import React, { useEffect } from 'react'
 import {useState} from 'react'
 import { useSetRecoilState } from 'recoil'
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import { auth } from '@/firebase/clientApp'
+import { auth, firestore } from '@/firebase/clientApp'
 import {Loader2} from 'lucide-react'
+import { addDoc, collection } from 'firebase/firestore'
+import { User } from 'firebase/auth'
 type Props = {}
 
 const SignUp = (props: Props) => {
@@ -23,7 +25,7 @@ const SignUp = (props: Props) => {
    const [error, setError] =  useState('');
    const [
     createUserWithEmailAndPassword,
-    user,
+    userCred,
     loading,
     userError,
   ] = useCreateUserWithEmailAndPassword(auth);
@@ -42,6 +44,15 @@ const SignUp = (props: Props) => {
     }))
    
    } 
+   const createUserDocument = async (user:User) => {
+    await addDoc(collection(firestore, 'users'), JSON.parse(JSON.stringify(user)))
+   }
+   useEffect(() => {
+     if (userCred){
+      createUserDocument(userCred.user)
+     }
+   }, [userCred])
+   
   return (
     <form  onSubmit = {onSubmit} className='flex flex-col gap-y-2'>
         <Input

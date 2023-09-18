@@ -1,18 +1,24 @@
-import CommunityModal from '@/components/Modal/Auth/Community/CommunityModal'
-import { DropdownMenuItem } from '@radix-ui/react-dropdown-menu'
+"use client"
+import { communityModal } from '@/Atoms/CommunityModal'
+import CommunityModal from '@/components/Modal/CommunityModal'
 import React, { useState } from 'react'
 import { GrAdd } from 'react-icons/gr'
+import {  useSetRecoilState } from 'recoil'
 
 type Props = {}
 
 const Communities = (props: Props) => {
-    const [open,setOpen] = useState(false)
+  
+    
   return (
-    <div>
+    <>
+       
         
-        <CommunityModal trigger = {open} />
-        <p onClick={() => setOpen(true)}>OPEN</p>
-    </div>
+       
+         <CommunityModal />
+
+        
+    </>
     
   )
 }

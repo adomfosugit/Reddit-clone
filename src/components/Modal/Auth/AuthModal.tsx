@@ -40,7 +40,7 @@ const AuthModal = (props: Props) => {
         <PopoverTrigger className='hidden' />
         <PopoverAnchor  />
         <PopoverPortal  >
-        <PopoverContent className='flex flex-col w-[400px]    '  sideOffset={20}  >
+        <PopoverContent  className='flex flex-col w-[400px] mt-10 '   >
           <div className='flex justify-between'> 
             
              
